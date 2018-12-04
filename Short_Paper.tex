@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage{pdflscape}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage[acronym, toc, nonumberlist]{glossaries}
+\usepackage{url} 
+\usepackage{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+% \usepackage[none]{hyphenat}
+
+\newcommand{\figref}[1]{\hyperref[#1]{\figurename~\ref*{#1}}}
+
+
+\makeglossaries
+\newacronym{iot}{IoT}{Internet of Things}
+\newacronym{coap}{CoAP}{The Constrained Application Protocol}
+\newacronym{udp}{UDP}{User Datagram Protocol}
+\newacronym{rest}{REST}{Representational State Transfer}
+\newacronym{m2m}{M2M}{Machine-to-Machine}
+\newacronym{rpi}{RPi}{Raspberry Pi}
+\newacronym{json}{JSON}{JavaScript Object Notation}
+\newacronym{gpio}{GPIO}{General Purpose Input Output}
+
+\title{CoAP based IoT data transfer from a Raspberry Pi to Cloud}
+\author{Thomas Scott}
+\date{20th November 2018}
+
+\begin{document}
+	\pagenumbering{gobble}
+	\maketitle
+	\newpage
+	\pagenumbering{arabic}
+
+	\section{Abstract}
+
+	\section{Introduction}
+	\input{chapters/introduction}
+	
+
+	\section{Design}
+	\input{chapters/design}
+
+	\section{Methodology}
+	\input{chapters/methodology}
+
+	\section{Software and Hardware specification}
+	\input{chapters/software_hardware_spec}
+
+	\section{Conclusion}
+	\input{chapters/conclusion}
+
+	\printglossaries
+
+	\bibliographystyle{agsm}
+	\bibliography{references}
+\end{document}
+
