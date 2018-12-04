@@ -1,0 +1,3 @@
+[submodule "rpi-coap"]
+	path = rpi-coap
+	url = https://github.com/Silver292/rpi-coap.git
