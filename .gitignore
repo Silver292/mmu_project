@@ -257,12 +257,3 @@ TSWLatexianTemp*
 
 # standalone packages
 *.sta
-
-# Folders to ignore
-latex\ boilerplate/
-Papers/
-Zotero/
-
-#Files to ignore
-Project\ Ideas.md
-Project.url

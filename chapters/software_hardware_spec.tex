@@ -1,0 +1,40 @@
+\subsection{Hardware}
+\begin{enumerate}
+    \item Raspberry Pi 3
+
+        Raspberry Pi 3 Model B, includes built in WiFi, \gls{gpio} ports and a 1.2GHz Quad-Core processor.
+    \item Micro SD card
+    
+        Used to load operating system onto the \gls{rpi}.
+    \item Power cord
+    
+        Supplies power to the \gls{rpi}.
+    \item DHT22 temperature and humidity sensor
+    
+        Connects to the \gls{rpi} using the \gls{rpi}'s \gls{gpio} ports. Will be used to provide data.
+
+\end{enumerate}
+
+\subsection{Software}
+\begin{enumerate}
+    \item Python 3
+
+        The Python programming language will be used to create the scripts and software needed on the \gls{rpi}.
+        This is due to the languages popularity when creating projects on the \gls{rpi} and the languages wide selection
+        of networking packages.
+    \item CoAPthon
+    
+        Python implementation of \gls{coap}. Licensed under the MIT license. \href{https://github.com/Tanganelli/CoAPthon}{Github}.
+
+    \item AdaFruit Python DHT
+        
+        Python library to retrieve sensor data from the DHT22. \href{https://github.com/adafruit/Adafruit_Python_DHT}{Github}.
+
+    \item Git Version Control
+    
+        Source code version control system to allow for adjustments to the code.
+
+    \item Cloud Platform
+    
+        Will act as an end point to the \gls{rpi} where the sensor data will be stored.
+\end{enumerate}
