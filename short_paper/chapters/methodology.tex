@@ -1,17 +1,17 @@
 The aim of the proposed system is to investigate the implementation of \gls{coap} 
-on a \gls{rpi} and how \gls{coap} can be 
-used to transmit data to the cloud. 
+on a \gls{rpi} and how \gls{coap} can be used to transmit data to the cloud. 
 
 To achieve this a \gls{coap} endpoint will need to be created on the \gls{rpi}. 
 The \gls{rpi} will collect sensor data at intervals and store them 
 locally on the device. The \gls{rpi} will act as a \gls{coap} server that will 
-respond to \gls{rest} GET requests with the sensor data and the time
+send to \gls{rest} POST requests with the sensor data and the time
 the reading was taken in a \gls{json} format.
 
-The clouds responsibility will be to send the GET requests to the \gls{coap} 
-endpoint hosted on the \gls{rpi} and to receive and store the data
-returned. The cloud should send a confirmable request to the \gls{coap} endpoint. 
-The \gls{coap} endpoint should then respond with an acknowledgement. 
+The clouds responsibility will be to receive the POST requests from the \gls{coap} 
+endpoint hosted on the \gls{rpi} and to store and format the data. 
+The cloud should send an Acknowledgement message to the \gls{coap} endpoint, 
+containing a 2.01 (Created) Response Code and the URI of the created / updated 
+resource \citep{shelby_constrained_2014}. 
 If the data is available, the data should be ``piggybacked'' to this response, as 
 shown in Figure \figref{fig:coap_get_piggy}, if not the data should be 
 returned in a confirmable message containing the data.

@@ -10,23 +10,25 @@ the cloud platform. The cloud platform will store the data, allowing access to u
 \end{figure}
 
 
-The DHT22 sensor will connect to the \gls{rpi} using the \gls{rpi}'s on board \gls{gpio} ports as shown in \figref{fig:rpi_wiring}. 
-Using the AdaFruit Python DHT library, a library that provides methods to interact with DHT sensors connected to the \gls{rpi}'s \gls{gpio} pins, 
-and the CoAPthon library, a Python implementation of the \gls{coap} protocol, a Python script will create a \gls{coap} endpoint. This endpoint will expose 
-the DHT methods for getting the latest data. When this endpoint receives a request the data will be current temperature and humidity will be
-retrieved from the sensor. Once this data has been collected it will be formatted in to \gls{json} using Python. This formatted data will then
-be the payload for the response. The cloud service will be responsible for displaying the data from the sensor and making the request to the 
-\gls{rpi} to get up to date information. This process is shown in \figref{fig:data_flow}.
+The DHT22 sensor will connect to the \gls{rpi} using the \gls{rpi}'s on board 
+\gls{gpio} ports as shown in \figref{fig:rpi_wiring}. 
+Using the AdaFruit Python DHT library, a library that provides methods to interact 
+with DHT sensors connected to the \gls{rpi}'s \gls{gpio} pins, 
+and the CoAPthon library, a Python implementation of the \gls{coap} protocol, a 
+Python script will create a \gls{coap} endpoint.
+This endpoint will act as an \gls{api} for the DHT 22 sensor. 
+The script will use the AdaFruit DHT methods to get the DHT 22 sensors temperature 
+and humidity data. This data will then be formatted into \gls{json} in order to 
+be transmitted. Then using the CoAPthon library a \gls{coap} message will be created 
+with the sensors \gls{json} data as the payload. This message will then be sent over
+\gls{udp} to a \gls{coap} \gls{uri} hosted by the cloud platform. The cloud endpoint 
+will receive the \gls{json} data, format it and display it to the user, who will 
+be accessing the cloud platform via \gls{http}. This process is shown in pseudocode
+\\TODO:ADD PSEUDOCODE.
 
 
 \begin{figure}[H]
     \centering
     \makebox[1\textwidth]{\includegraphics[width=1\textwidth]{assets/rpi_wiring.png}}
     \caption{\label{fig:rpi_wiring} Wiring diagram for connecting the sensor to the \gls{rpi}.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \makebox[1\textwidth]{\includegraphics[width=0.5\textwidth]{assets/data_flow.png}}
-    \caption{\label{fig:data_flow} Shows the flow of data from sensor to user.}
 \end{figure}
