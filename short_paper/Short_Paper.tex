@@ -9,7 +9,9 @@
 \usepackage[acronym, toc, nonumberlist]{glossaries}
 \usepackage{url} 
 \usepackage{hyperref}
+\usepackage[cache=false]{minted}
 \usepackage{xcolor}
+\usepackage[toc, page]{appendix}
 \hypersetup{
     colorlinks,
     linkcolor={red!50!black},
@@ -30,6 +32,9 @@
 \newacronym{rpi}{RPi}{Raspberry Pi}
 \newacronym{json}{JSON}{JavaScript Object Notation}
 \newacronym{gpio}{GPIO}{General Purpose Input Output}
+\newacronym{dtls}{DTLS}{Datagram Transport Layer Security}
+\newacronym{uri}{URI}{Uniform Resource Identifier}
+\newacronym{http}{HTTP}{HyperText Transfer Protocol}
 
 \title{CoAP based IoT data transfer from a Raspberry Pi to Cloud}
 \author{Thomas Scott}
@@ -47,6 +52,9 @@
 	\section{Introduction}
 	\input{chapters/introduction}
 
+	\section{The Constrained Application Protocol}
+	\input{chapters/coap.tex}
+
 	\section{Design}
 	\input{chapters/design}
 
@@ -58,6 +66,13 @@
 
 	\section{Conclusion}
 	\input{chapters/conclusion}
+
+	\begin{appendices}
+		
+		\section{Python Code to Get DHT22 Data}
+		\input{chapters/appendix_one_code}
+		
+	\end{appendices}
 
 	\printglossaries
 

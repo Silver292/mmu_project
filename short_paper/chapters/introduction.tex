@@ -1,17 +1,34 @@
-The reduced cost of low powered small devices, such as the \gls{rpi}, has made it more accessible to create bespoke systems. 
-This combined with the increasing popularity of home automation allows for these devices to be used in the \gls{iot}.
+The reduced cost of low powered small devices, such as the \gls{rpi}, has made it 
+more accessible to create bespoke systems. 
+This combined with the increasing popularity of home automation allows for these 
+devices to be used in the \gls{iot}.
 
-The \gls{iot} can be viewed as a large distributed network comprising of highly dynamic devices \citep{miorandi2012internet}. Small low powered ``smart'' devices can connect and communicate with one another. Some of these devices can contain or communicate with sensors that record real world data. This data can then be transmitted to other devices allowing them to trigger actions. In this way groups of smart devices can be used to improve day to day situations such as automated houses (thermostats and heating etc.), security and improved monitoring.
+The \gls{iot} can be viewed as a large distributed network comprising of highly 
+dynamic devices \citep{miorandi_internet_2012}. Small low powered ``smart'' devices 
+can connect and communicate with one another. Some of these devices can contain or 
+communicate with sensors that record real world data. This data can then be 
+transmitted to other devices allowing them to trigger actions. In this way groups 
+of smart devices can be used to improve day to day situations such as automated 
+houses (thermostats and heating etc.), security and improved monitoring.
 
-The Raspberry Pi \citep{pi3model} is a credit card sized computer developed by the Raspberry Pi Foundation. 
-The \gls{rpi}'s ability to act as a GNU/Linux server and the interfacing services provided by its general purpose I/O pins make it a popular 
-choice of hardware for \gls{iot} applications. \citep{kumar2016iot}
+The Raspberry Pi \citep{pi_model_2018} is a credit card sized computer developed 
+by the Raspberry Pi Foundation. 
+The \gls{rpi}'s ability to act as a GNU/Linux server and the interfacing services 
+provided by its general purpose I/O pins make it a popular 
+choice of hardware for \gls{iot} applications. \citep{kumar_iot_2016}
 
-With 48\% of the UK market considering their smartphone as the most important device for internet access \citep{ofcom2018} allowing users to use their handheld devices to view and manage their data has become increasingly necessary. Cloud platforms that allow access from any device go a long way to 
-solving this problem. Storing sensor data in the cloud allows for easy access to users from any device as well as allowing for scalable storage.
+With 48\% of the UK market considering their smartphone as the most important 
+device for internet access \citep{ofcom_communications_2018} allowing users to use 
+their handheld devices to view and manage their data has become increasingly 
+necessary. Cloud platforms that allow access from any device go a long way to 
+solving this problem. Storing sensor data in the cloud allows for easy access to 
+users from any device as well as allowing for scalable storage.
 
-As these devices are limited in computing power it is important that the devices communicate efficiently. 
-This paper explores the use of \gls{coap} as a protocol to transmit sensor data from a small, low powered device (\gls{rpi}) to send sensor data to the cloud.
+As these devices are limited in computing power it is important that the devices 
+communicate efficiently. 
+This paper explores the use of \gls{coap} as a protocol to transmit sensor data 
+from a small, low powered device (\gls{rpi}) to send sensor data to the cloud.
 
-In this system the a sensor will be attached to the \gls{rpi}, the \gls{rpi} will be responsible for taking the data from the sensor and then 
+In this system the a sensor will be attached to the \gls{rpi}, the \gls{rpi} will 
+be responsible for taking the data from the sensor and then 
 using the \gls{coap} protocol to transmit this data to the cloud platform.
