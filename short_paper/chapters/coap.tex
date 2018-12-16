@@ -1,7 +1,8 @@
 \acrfull{coap} is a transfer protocol specialised for use with the web, constrained
 nodes and constrained networks \citep{shelby_constrained_2014}. The protocol is 
 designed for \gls{m2m} applications and is ideally suited for use within the 
-\gls{iot} ecosystem.
+\gls{iot} ecosystem. \glspl{coap} features of observable resources, multicasting, \gls{m2m} discovery 
+make it a better fit for \gls{iot} applications than \gls{http} \citep{kovatsch_californium:_2014}.
 
 \gls{coap} recognises that web services have become dependant in \gls{rest} 
 architecture and works to implement a subset of \gls{rest} common with HTTP while
@@ -14,11 +15,8 @@ exchanging messages over \gls{udp} or \gls{dtls} to send messages securely. \gls
 resources are addressable by \glspl{uri} and can be interacted with through the 
 same methods as \gls{http}: GET, PUT, POST and DELETE.
 
-\glspl{coap} features of observable resources, multicasting, \gls{m2m} discovery 
-make it a better fit for \gls{iot} applications than \gls{http} \citep{kovatsch_californium:_2014}.
 With regards to reliability \gls{coap} offers four types of messages: Confirmable, 
 Non-Confirmable, Acknowledgement and Reset \citep{bellavista_towards_2016}.
-
 After a Confirmable request is sent to a \gls{coap} endpoint, the endpoint will 
 respond with an Acknowledgement message. This message can contain the requested 
 data in a `piggybacked' response. Otherwise an empty Acknowledgement message is sent, 

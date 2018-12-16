@@ -1,7 +1,7 @@
 \begin{minted}[linenos,tabsize=2,breaklines]{python}
 #!/usr/bin/env python3
 """
-Script to get sensor data from DHT22 and provide the data through a CoAP endpoint
+Script to get sensor data from DHT22 and print it to console
 """
 
 __author__ = "Tom Scott"
@@ -32,7 +32,7 @@ class SensorData(object):
 def get_sensor_data():
     """
     Returns a SensorData object containing the latest data from the DHT22 sensor.
-    The method will 15 times to get data, if there is still no data available
+    The method will try 15 times to get data, if there is still no data available
     it will return an empty SensorData object
     """
 
@@ -51,6 +51,7 @@ def main():
     sensor_data = get_sensor_data()
 
     if sensor_data.has_data():
+        # Format and display data to console
         print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(sensor_data.temperature, sensor_data.humidity))
 
 

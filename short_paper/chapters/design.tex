@@ -23,9 +23,27 @@ be transmitted. Then using the CoAPthon library a \gls{coap} message will be cre
 with the sensors \gls{json} data as the payload. This message will then be sent over
 \gls{udp} to a \gls{coap} \gls{uri} hosted by the cloud platform. The cloud endpoint 
 will receive the \gls{json} data, format it and display it to the user, who will 
-be accessing the cloud platform via \gls{http}. This process is shown in pseudocode
-\\TODO:ADD PSEUDOCODE.
+be accessing the cloud platform via \gls{http}. This process is shown in \algref{alg:get_send_data_alg}.
 
+\begin{center}
+\begin{algorithm}[H]
+    \KwData{Temperature and humidity data from sensor}
+    \KwResult{Sensor data sent to Cloud CoAP endpoint}
+    initialization\;
+    define interval in seconds (DHT 22 sensor interval is 2 seconds)\;
+    \While{running}{
+        get latest sensor data from DHT 22 sensor\;
+        \eIf{sensor data is returned}{
+            format data into json object\;
+            create CoAP Post message with cloud uri as destination\;
+            send CoAP message\;
+        }{
+            wait interval time and continue\;
+        }
+    }
+    \caption{\label{alg:get_send_data_alg}How to get data from sensor and send to cloud.}
+\end{algorithm}
+\end{center}
 
 \begin{figure}[H]
     \centering
