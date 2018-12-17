@@ -1,0 +1,14 @@
+\cite{rode_iot_2017} carries out a similar investigation, using a \gls{rpi} 
+device as a \gls{iot} node connected to sensors. The \gls{rpi} collects the 
+data from the sensors and then transmits the data to a cloud platform. The 
+cloud platform in this instance is a \gls{http} server which will receive the
+sensor data and display it to the user. \cite{rode_iot_2017} proposes using the 
+\gls{mqtt} protocol to transmit the sensor data from the \gls{rpi} to the
+ \gls{http} server.
+\gls{mqtt} is a popular \gls{iot} protocol developed to specialise in the transfer
+of data from \glspl{wsn} \citep{hunkeler_mqtt-s_2008}. \gls{mqtt} works on a 
+publish/subscribe model, in \cite{rode_iot_2017} the \gls{rpi} acts a \textit{publisher}, 
+publishing the sensor data to the broker and the \gls{http} server acts as a \textit{subscriber}.
+This contrasts to the approach taken in this proposal using \gls{coap}. Where each
+node in the \gls{coap} network acts as both a server and a client in a more traditional
+ \gls{http} model.
