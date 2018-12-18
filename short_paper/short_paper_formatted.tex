@@ -1,0 +1,86 @@
+\documentclass[conference]{IEEEtran}
+% \IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+
+\usepackage[inline]{enumitem}
+\usepackage[]{algorithm2e}
+\usepackage[numbers]{natbib}
+\usepackage{float}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={black!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\usepackage[acronym, toc, nonumberlist]{glossaries}
+
+% Hyperlink figures and algorithms
+\newcommand{\figref}[1]{\hyperref[#1]{\figurename~\ref*{#1}}}
+\newcommand{\algref}[1]{\hyperref[#1]{Algorithm~\ref*{#1}}}
+
+% define image width
+\newcommand{\imageWidth}{0.5} 
+
+\makeglossaries
+\input{chapters/glossary}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{CoAP based IoT data transfer from a Raspberry Pi to Cloud}
+
+\author{\IEEEauthorblockN{Thomas Lee Scott}
+\IEEEauthorblockA{\textit{School of Computing, Mathematics \& Digital Technology} \\
+\textit{Manchester Metropolitan University}\\
+Manchester, United Kingdom \\
+tomscott292@gmail.com}
+}
+
+\maketitle
+
+\begin{abstract}
+\input{chapters/abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+Internet of Things, CoAP, M2M, constrained devices, Raspberry Pi board.
+\end{IEEEkeywords}
+
+\section{Introduction}
+\input{chapters/introduction}
+
+\subsection{Motivation}
+\input{chapters/motivation}
+
+\subsection{Related Work and Contribution}
+\input{chapters/related_work}
+
+\section{Background}
+\subsection{Internet of Things}
+\input{chapters/iot}
+
+\subsection{The Constrained Application Protocol}
+\input{chapters/coap}
+
+\section{Designed \gls{coap}-based \gls{iot} Architecture}
+\input{chapters/design}
+
+\section{\gls{coap}-based \gls{iot} Architecture Components}
+\input{chapters/methodology}
+\input{chapters/software_hardware_spec}
+
+\section{Conclusion and Future Work}
+\input{chapters/conclusion}
+\input{chapters/future_works}
+
+\bibliographystyle{IEEEtranN}
+\bibliography{references}
+\vspace{12pt}
+
+\end{document}

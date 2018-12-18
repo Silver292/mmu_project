@@ -21,27 +21,16 @@
 }
 % \usepackage[none]{hyphenat}
 
+% Hyperlink figures and algorithms
 \newcommand{\figref}[1]{\hyperref[#1]{\figurename~\ref*{#1}}}
 \newcommand{\algref}[1]{\hyperref[#1]{Algorithm~\ref*{#1}}}
 
+% define image width
+\newcommand{\imageWidth}{1}
+
 
 \makeglossaries
-\newacronym{iot}{IoT}{Internet of Things}
-\newacronym{coap}{CoAP}{The Constrained Application Protocol}
-\newacronym{udp}{UDP}{User Datagram Protocol}
-\newacronym{rest}{REST}{Representational State Transfer}
-\newacronym{m2m}{M2M}{Machine-to-Machine}
-\newacronym{rpi}{RPi}{Raspberry Pi}
-\newacronym{json}{JSON}{JavaScript Object Notation}
-\newacronym{gpio}{GPIO}{General Purpose Input Output}
-\newacronym{dtls}{DTLS}{Datagram Transport Layer Security}
-\newacronym{uri}{URI}{Uniform Resource Identifier}
-\newacronym{http}{HTTP}{HyperText Transfer Protocol}
-\newacronym{api}{API}{Application programming interface}
-\newacronym{mqtt}{MQTT}{Message Queuing Telemetry Transport}
-\newacronym{wsn}{WSN}{Wireless Sensor Network}
-\newacronym{aws}{AWS}{Amazon Web Services}
-\newacronym{ssl}{SSL}{Secure Socket Layer}
+\input{chapters/glossary.tex}
 
 \title{CoAP based IoT data transfer from a Raspberry Pi to Cloud}
 \author{Thomas Scott}

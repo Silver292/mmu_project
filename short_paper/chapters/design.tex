@@ -5,19 +5,22 @@ the cloud platform. The cloud platform will store the data, allowing access to u
 
 \begin{figure}[H]
     \centering
-    \makebox[1\textwidth]{\includegraphics[width=1\textwidth]{assets/Project_Framework.png}}
+    \includegraphics[width=\imageWidth\textwidth]{assets/Project_Framework.png}
     \caption{\label{fig:proj_framework} The project infrastructure.}
 \end{figure}
 
 
 The DHT22 sensor will connect to the \gls{rpi} using the \gls{rpi}'s on board 
 \gls{gpio} ports as shown in \figref{fig:rpi_wiring}. 
-Using the AdaFruit Python DHT library, a library that provides methods to interact 
+Using the AdaFruit Python DHT library and the CoAPthon library a Python script 
+will create a \gls{coap} endpoint on the \gls{rpi}.
+The AdaFruit Python DHT library is a library that provides methods to interact 
 with DHT sensors connected to the \gls{rpi}'s \gls{gpio} pins, 
-and the CoAPthon library, a Python implementation of the \gls{coap} protocol, a 
-Python script will create a \gls{coap} endpoint.
-This endpoint will act as an \gls{api} for the DHT 22 sensor. 
-The script will use the AdaFruit DHT methods to get the DHT 22 sensors temperature 
+and the CoAPthon library is a Python implementation of the \gls{coap} protocol.
+
+
+This endpoint will act as an interface for the DHT22 sensor. 
+The script will use the AdaFruit DHT methods to get the DHT22 sensors temperature 
 and humidity data. This data will then be formatted into \gls{json} in order to 
 be transmitted. Then using the CoAPthon library a \gls{coap} message will be created 
 with the sensors \gls{json} data as the payload. This message will then be sent over
@@ -26,13 +29,13 @@ will receive the \gls{json} data, format it and display it to the user, who will
 be accessing the cloud platform via \gls{http}. This process is shown in \algref{alg:get_send_data_alg}.
 
 \begin{center}
-\begin{algorithm}[H]
+\begin{algorithm}[]
     \KwData{Temperature and humidity data from sensor}
     \KwResult{Sensor data sent to Cloud CoAP endpoint}
-    initialization\;
-    define interval in seconds (DHT 22 sensor interval is 2 seconds)\;
+    initialisation\;
+    define interval in seconds (DHT22 sensor interval is 2 seconds)\;
     \While{running}{
-        get latest sensor data from DHT 22 sensor\;
+        get latest sensor data from DHT22 sensor\;
         \eIf{sensor data is returned}{
             format data into json object\;
             create CoAP Post message with cloud uri as destination\;
@@ -47,6 +50,6 @@ be accessing the cloud platform via \gls{http}. This process is shown in \algref
 
 \begin{figure}[H]
     \centering
-    \makebox[1\textwidth]{\includegraphics[width=1\textwidth]{assets/rpi_wiring.png}}
+   \includegraphics[width=\imageWidth\textwidth]{assets/rpi_wiring.png}
     \caption{\label{fig:rpi_wiring} Wiring diagram for connecting the sensor to the \gls{rpi}.}
 \end{figure}

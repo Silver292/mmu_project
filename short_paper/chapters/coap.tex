@@ -15,11 +15,11 @@ exchanging messages over \gls{udp} or \gls{dtls} to send messages securely. \gls
 resources are addressable by \glspl{uri} and can be interacted with through the 
 same methods as \gls{http}: GET, PUT, POST and DELETE.
 
-With regards to reliability \gls{coap} offers four types of messages: Confirmable, 
+With regards to reliability, \gls{coap} offers four types of messages: Confirmable, 
 Non-Confirmable, Acknowledgement and Reset \citep{bellavista_towards_2016}.
 After a Confirmable request is sent to a \gls{coap} endpoint, the endpoint will 
 respond with an Acknowledgement message. This message can contain the requested 
-data in a `piggybacked' response. Otherwise an empty Acknowledgement message is sent, 
+data in a `piggybacked' response. Otherwise, an empty Acknowledgement message is sent 
 and a Confirmable message will be sent once the data is ready. The original
 requester will then respond with an empty Acknowledgement message to confirm receipt 
 of the data \citep{shelby_constrained_2014}.
