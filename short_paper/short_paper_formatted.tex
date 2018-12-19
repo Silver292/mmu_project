@@ -1,6 +1,5 @@
 \documentclass[conference]{IEEEtran}
-% \IEEEoverridecommandlockouts
-% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
 \usepackage{textcomp}
@@ -8,10 +7,11 @@
 
 \usepackage[inline]{enumitem}
 \usepackage[]{algorithm2e}
-\usepackage[numbers]{natbib}
+\usepackage[doi=false, isbn=false, url=false, natbib=true, style=ieee, backend=bibtex]{biblatex}
 \usepackage{float}
-\usepackage{hyperref}
+\usepackage[draft]{hyperref}
 \hypersetup{
+    % draft,
     colorlinks,
     linkcolor={black!50!black},
     citecolor={blue!50!black},
@@ -19,12 +19,16 @@
 }
 \usepackage[acronym, toc, nonumberlist]{glossaries}
 
+\renewcommand{\figurename}{Figure}
+
 % Hyperlink figures and algorithms
 \newcommand{\figref}[1]{\hyperref[#1]{\figurename~\ref*{#1}}}
 \newcommand{\algref}[1]{\hyperref[#1]{Algorithm~\ref*{#1}}}
 
 % define image width
-\newcommand{\imageWidth}{0.5} 
+\newcommand{\imageWidth}{0.45} 
+
+\addbibresource{references.bib}
 
 \makeglossaries
 \input{chapters/glossary}
@@ -40,6 +44,12 @@
 \textit{Manchester Metropolitan University}\\
 Manchester, United Kingdom \\
 tomscott292@gmail.com}
+\and
+\IEEEauthorblockN{Amna Eleyan}
+\IEEEauthorblockA{\textit{School of Computing, Mathematics \& Digital Technology} \\
+\textit{Manchester Metropolitan University}\\
+Manchester, United Kingdom \\
+A.Eleyan@mmu.ac.uk}
 }
 
 \maketitle
@@ -61,6 +71,8 @@ Internet of Things, CoAP, M2M, constrained devices, Raspberry Pi board.
 \subsection{Related Work and Contribution}
 \input{chapters/related_work}
 
+\input{chapters/contribution}
+
 \section{Background}
 \subsection{Internet of Things}
 \input{chapters/iot}
@@ -79,8 +91,7 @@ Internet of Things, CoAP, M2M, constrained devices, Raspberry Pi board.
 \input{chapters/conclusion}
 \input{chapters/future_works}
 
-\bibliographystyle{IEEEtranN}
-\bibliography{references}
+\printbibliography
 \vspace{12pt}
 
 \end{document}
