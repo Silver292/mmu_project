@@ -93,9 +93,11 @@ The CoAPthon library is a Python implementation of the \gls{coap} protocol.
 \end{center}
 
 This endpoint will act as an interface for the DHT22 sensor. 
-At intervals the script will use the AdaFruit DHT library methods to retrieve the DHT22 sensor's current
-temperature and humidity readings. This data will then be formatted into \gls{json}
-in order to be transmitted. Then using the CoAPthon library a \gls{coap} 
+At intervals the script will use the AdaFruit DHT library methods to retrieve 
+the DHT22 sensor's current temperature and humidity readings. 
+This data will then be formatted into \gls{json}
+in order to be transmitted.
+Then using the CoAPthon \citep{tanganelli_coapthon:_2015} library a \gls{coap} 
 message will be created with the sensors \gls{json} data as the payload. 
 This loop will then repeat while the \gls{rpi} is active, this process is 
 formalised in \algref{alg:get_send_data_alg}.
