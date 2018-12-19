@@ -2,11 +2,12 @@ The system shall consist of four main elements: the sensor, the \gls{rpi}, \gls{
 The sensor will collect the data and pass this to the \gls{rpi}. The \gls{rpi} will then be responsible for manipulating
 the data into a suitable format for transmission via \gls{coap}. The implementation of \gls{coap} will communicate with
 the cloud platform. The cloud platform will store the data, allowing access to users.
+The design of this architecture is illustrated in \figref{fig:coap_iot_architecture}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\imageWidth\textwidth]{assets/Project_Framework.png}
-    \caption{\label{fig:proj_framework} The project infrastructure.}
+    \caption{\label{fig:coap_iot_architecture} \gls{coap}-based \gls{iot} Architecture.}
 \end{figure}
 
 
@@ -29,7 +30,7 @@ will receive the \gls{json} data, format it and display it to the user, who will
 be accessing the cloud platform via \gls{http}. This process is shown in \algref{alg:get_send_data_alg}.
 
 \begin{center}
-\begin{algorithm}[]
+\begin{algorithm}[htbp]
     \KwData{Temperature and humidity data from sensor}
     \KwResult{Sensor data sent to Cloud CoAP endpoint}
     initialisation\;
