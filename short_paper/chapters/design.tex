@@ -2,7 +2,53 @@ The system shall consist of four main elements: the sensor, the \gls{rpi}, \gls{
 The sensor will collect the data and pass this to the \gls{rpi}. The \gls{rpi} will then be responsible for manipulating
 the data into a suitable format for transmission via \gls{coap}. The implementation of \gls{coap} will communicate with
 the cloud platform. The cloud platform will store the data, allowing access to users.
-The design of this architecture is illustrated in \figref{fig:coap_iot_architecture}.
+The following components are explained below.
+
+\begin{description}
+    \item[Sensors] 
+    The DHT22/AM2302 digital relative temperature and humidity 
+    sensor will be used to collect temperature and humidity data from the environment.
+    The DHT22 has three pins: One for the 3.3--5.5V power, one for data output and
+    one pin for neutral. The \gls{rpi} can connect to the DHT22 using the \gls{rpi}'s 
+    \gls{gpio} ports to provide power, a ground connection and an output for the 
+    DHT22's data, this connection is shown in \figref{fig:rpi_wiring}. The DHT 
+    is capable of measuring temperatures in the range of -40 to 80 degrees celsius
+    and reporting a relative humidity of between 0 to 100\% to an accuracy of $\pm2$\%.
+    The largest negative to the DHT22 sensor is that it will only report new data
+    once every two seconds, leading to reading being up to two seconds old.
+
+    \item[Device]
+    The Raspberry Pi 3 Model B is a Linux-based microcomputer.
+    It includes built in WiFi, \gls{gpio} ports, a 1.2GHz Quad-Core processor,
+    MicroSD card slot, memory, video/audio outputs, Ethernet port, and power source 
+    \citep{pi_model_2018}. 
+    It uses a MicroSD memory card as a boot drive and runs a specialised 
+    GNU/Linux distribution named Raspbian. Although the \gls{rpi} can be attached
+    to a monitor using the built in HDMI port and controlled with a USB mouse and
+    keyboard, this study will connect to the \gls{rpi} using SSH. The \gls{rpi} 
+    will run a Python script which will collect the data from the DHT22 sensor 
+    and send it to the \gls{coap} endpoint in the cloud.
+
+    \item[Gateway]
+    As this is a \gls{coap} based architecture and as such mirrors the workings
+    of \gls{http} the gateway will be the local networks router. This will be 
+    responsible for directing the \gls{coap} messages to the \gls{coap} endpoint
+    identified by the cloud platforms \gls{uri}.
+
+    \item[Cloud]
+    This study will make use of an open source cloud platform, ThingsBoard.
+    ThingsBoard is an \gls{iot} platform that allows the collection and 
+    visualisation of data from \gls{iot} devices, connection from \gls{iot} devices
+    using \gls{mqtt}, \gls{coap} or \gls{http}, the definition of rules to validate
+    incoming data among other features. The \gls{rpi} will use the \gls{uri} 
+    provided by the ThingsBoard \gls{coap} \gls{api} to send the sensor data to.
+    Once ThingsBoard receives the sensor data it will update a dashboard which
+    will show the temperature and humidity data provided by the sensor over time.
+
+\end{description}
+
+The complete design of this system and how each component will interact
+is illustrated in \figref{fig:coap_iot_architecture}.
 
 \begin{figure}[H]
     \centering
@@ -19,15 +65,17 @@ The AdaFruit Python DHT library is a library that provides methods to interact
 with DHT sensors connected to the \gls{rpi}'s \gls{gpio} pins, 
 and the CoAPthon library is a Python implementation of the \gls{coap} protocol.
 
-
 This endpoint will act as an interface for the DHT22 sensor. 
 The script will use the AdaFruit DHT methods to get the DHT22 sensors temperature 
 and humidity data. This data will then be formatted into \gls{json} in order to 
 be transmitted. Then using the CoAPthon library a \gls{coap} message will be created 
 with the sensors \gls{json} data as the payload. This message will then be sent over
-\gls{udp} to a \gls{coap} \gls{uri} hosted by the cloud platform. The cloud endpoint 
-will receive the \gls{json} data, format it and display it to the user, who will 
-be accessing the cloud platform via \gls{http}. This process is shown in \algref{alg:get_send_data_alg}.
+\gls{udp} to a \gls{coap} \gls{uri} hosted by the cloud platform as illustrated in 
+\figref{fig:rpi_cloud_comms}. 
+The cloud endpoint will receive the \gls{json} data, format it and display it 
+to the user, who will be accessing the cloud platform via \gls{http}. 
+The \gls{rpi} will then repeat this process, this is formalised 
+in \algref{alg:get_send_data_alg}.
 
 \begin{center}
 \begin{algorithm}[htbp]
@@ -52,5 +100,5 @@ be accessing the cloud platform via \gls{http}. This process is shown in \algref
 \begin{figure}[H]
     \centering
    \includegraphics[width=\imageWidth\textwidth]{assets/rpi_wiring.png}
-    \caption{\label{fig:rpi_wiring} Wiring diagram for connecting the sensor to the \gls{rpi}.}
+    \caption{\label{fig:rpi_wiring} Wiring diagram for connecting the DHT22 sensor to the \gls{rpi}.}
 \end{figure}
