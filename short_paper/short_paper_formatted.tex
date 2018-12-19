@@ -9,14 +9,22 @@
 \usepackage[]{algorithm2e}
 \usepackage[doi=false, isbn=false, url=false, natbib=true, style=ieee, backend=bibtex]{biblatex}
 \usepackage{float}
-\usepackage[draft]{hyperref}
+
+\usepackage{caption}
+\usepackage[newfloat]{minted}
+% Line numbers not flowing out of the margin
+\setminted{numbersep=5pt, xleftmargin=12pt}
+\usemintedstyle{bw} %black and white style
+
+\usepackage{hyperref}
+% Enable hyperref without colors and without bookmarks
 \hypersetup{
-    % draft,
-    colorlinks,
-    linkcolor={black!50!black},
-    citecolor={blue!50!black},
-    urlcolor={blue!80!black}
-}
+    hidelinks,
+  colorlinks=true,
+  allcolors=black,
+  pdfstartview=Fit,
+  breaklinks=true
+  }
 \usepackage[acronym, toc, nonumberlist]{glossaries}
 
 \renewcommand{\figurename}{Figure}
@@ -83,9 +91,11 @@ Internet of Things, CoAP, M2M, constrained devices, Raspberry Pi board.
 \section{Designed \gls{coap}-based \gls{iot} Architecture}
 \input{chapters/design}
 
-\section{\gls{coap}-based \gls{iot} Architecture Components}
+\inputminted[fontsize=\footnotesize,linenos,escapeinside=||,tabsize=2,breaklines]{python}{../rpi-coap/rpi-coap.py}
+\captionof{listing}{Python code to get DHT22 sensor data\label{lst:python_code}}
+
+\section{\gls{coap}-based \gls{iot} Architecture Implementation}
 \input{chapters/methodology}
-\input{chapters/software_hardware_spec}
 
 \section{Conclusion and Future Work}
 \input{chapters/conclusion}
