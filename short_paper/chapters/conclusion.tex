@@ -6,5 +6,8 @@ be used with Python to create an \gls{iot} device capable of transferring data t
 The \gls{rpi} has been connected to a DHT22 temperature and humidity sensor using
 the \glspl{rpi} \gls{gpio} pins. A Python script running on the \gls{rpi} uses
 an external library provided by AdaFruit to poll the sensor at intervals and 
-obtain the current temperature and humidity. This data is then formatted and
-displayed to the console.
+obtain the current temperature and humidity. Using the CoAPthon \citep{tanganelli_coapthon:_2015} 
+library, a \gls{coap} client is created and used to send a \gls{coap} POST 
+message containing the sensor data to a ThingsBoard 
+\citep{thingsboard_inc._thingsboard_2018} telemetry endpoint. This data 
+is then displayed to the user in a dashboard.
