@@ -1,3 +1,9 @@
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\imageWidth\textwidth]{assets/Project_Framework.png}
+    \caption{\label{fig:coap_iot_architecture} \gls{coap}-based \gls{iot} Architecture.}
+\end{figure}
+
 The system shall consist of four main elements: the sensor, the \gls{rpi}, 
 \gls{coap} and the cloud platform.
 The sensor will collect the data and pass this to the \gls{rpi}. 
@@ -7,6 +13,12 @@ The implementation of \gls{coap} will communicate with
 the cloud platform. The cloud platform will store the data, 
 allowing access to users.
 The parts of the system are explained below:
+
+\begin{figure}[H]
+    \centering
+   \includegraphics[width=\imageWidth\textwidth]{assets/rpi_wiring.png}
+    \caption{\label{fig:rpi_wiring} Wiring diagram for connecting the DHT22 sensor to the \gls{rpi}.}
+\end{figure}
 
 \begin{description}
     \item[Sensors] 
@@ -27,7 +39,7 @@ The parts of the system are explained below:
     MicroSD card slot, memory, video/audio outputs, Ethernet port, and power source 
     \citep{pi_model_2018}. 
     It uses a MicroSD memory card as a boot drive and runs a specialised 
-    GNU/Linux distribution named Raspbian. Although the \gls{rpi} can be attached
+    GNU/Linux distribution named Raspbian \citep{raspbian_raspbian_2018}. Although the \gls{rpi} can be attached
     to a monitor using the built in HDMI port and controlled with a USB mouse and
     keyboard, this study will connect to the \gls{rpi} using SSH. The \gls{rpi} 
     will run a Python script which will collect the data from the DHT22 sensor 
@@ -47,18 +59,13 @@ The parts of the system are explained below:
     incoming data among other features. The \gls{rpi} will use the \gls{uri} 
     provided by the ThingsBoard \gls{coap} \gls{api} to send the sensor data to.
     Once ThingsBoard receives the sensor data it will update a dashboard which
-    will show the temperature and humidity data provided by the sensor over time.
+    will show the temperature and humidity data provided by the sensor over time,
+    this dashboard is displayed in \figref{fig:thingsboard_dashboard}.
 
 \end{description}
 
 The complete design of this system and how each component will interact
 is illustrated in \figref{fig:coap_iot_architecture}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\imageWidth\textwidth]{assets/Project_Framework.png}
-    \caption{\label{fig:coap_iot_architecture} \gls{coap}-based \gls{iot} Architecture.}
-\end{figure}
 
 The DHT22 sensor will connect to the \gls{rpi} using the \gls{rpi}'s on board 
 \gls{gpio} ports as shown in \figref{fig:rpi_wiring}. 
@@ -93,11 +100,11 @@ The CoAPthon library is a Python implementation of the \gls{coap} protocol.
 \end{center}
 
 This endpoint will act as an interface for the DHT22 sensor. 
-At intervals the script will use the AdaFruit DHT library methods to retrieve 
+At intervals the script will use the AdaFruit DHT library \citep{adafruit_adafruit_python_dht_2018} methods to retrieve 
 the DHT22 sensor's current temperature and humidity readings. 
 This data will then be formatted into \gls{json}
 in order to be transmitted.
-Then using the CoAPthon \citep{tanganelli_coapthon:_2015} library a \gls{coap} 
+Then using the CoAPthon \citep{tanganelli_coapthon:_2015, tanganelli_coapthon3_2018} library a \gls{coap} 
 message will be created with the sensors \gls{json} data as the payload. 
 This loop will then repeat while the \gls{rpi} is active, this process is 
 formalised in \algref{alg:get_send_data_alg}.
@@ -117,9 +124,3 @@ Once the ThingsBoard platform has received the request it should send an
 Acknowledgement message to the \gls{coap} endpoint, 
 containing a 2.01 (Created) Response Code or a 2.04 (Changed) Response Code 
 and the URI of the created / updated resource \citep{shelby_constrained_2014}. 
-
-\begin{figure}[H]
-    \centering
-   \includegraphics[width=\imageWidth\textwidth]{assets/rpi_wiring.png}
-    \caption{\label{fig:rpi_wiring} Wiring diagram for connecting the DHT22 sensor to the \gls{rpi}.}
-\end{figure}
