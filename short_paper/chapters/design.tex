@@ -80,23 +80,7 @@ endpoint on the \gls{rpi}.
 The CoAPthon library is a Python implementation of the \gls{coap} protocol.
 
 \begin{center}
-    \begin{algorithm}[htbp]
-        \KwData{Temperature and humidity data from sensor}
-        \KwResult{Sensor data sent to Cloud CoAP endpoint}
-        initialisation\;
-        define the interval in seconds (DHT22 sensor interval is 2 seconds)\;
-        \While{running}{
-            get latest sensor data from DHT22 sensor\;
-            \eIf{sensor data is returned}{
-                format data into json object\;
-                create CoAP Post message with cloud uri as destination\;
-                send CoAP message\;
-            }{
-                wait interval time and continue\;
-            }
-        }
-        \caption{\label{alg:get_send_data_alg}How to get data from sensor and send to cloud.}
-    \end{algorithm}
+    \input{assets/figures/algorithm.tex}
 \end{center}
 
 This endpoint will act as an interface for the DHT22 sensor. 
