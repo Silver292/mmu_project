@@ -1,8 +1,13 @@
-This research investigates the use of \gls{coap} in transmitting sensor data
-to the cloud. It aims to explore how \gls{coap} fits into the \gls{iot} ecosystem and
-what advantages it offers over other \gls{iot} protocols. A framework is proposed 
-using a \gls{rpi} and sensor acting as an \gls{iot} endpoint. This endpoint will poll 
-the sensor and using \gls{coap} will send the latest data formatted as \gls{json} to 
-a \gls{coap} cloud endpoint at regular intervals.
-The cloud service will receive, format and display the data from the \gls{rpi} 
-to the user.
+This paper describes the development of an \gls{iot} monitoring system using
+ThingsBoard \gls{iot} platform.
+ThingsBoard is an open source software tool, which is used to collect,
+monitor and visualise streams of data received in real-time by sensor devices.
+The platform can be hosted in the cloud and provides 
+\gls{mqtt}, \gls{coap} and \gls{http} protocols support.
+\gls{mqtt} and \gls{http} protocols have mostly been used to develop various \gls{iot} systems.
+However, this paper investigates the use of the \gls{coap} in transmitting sensor data to the cloud.
+It aims to explore how \gls{coap} fits into the \gls{iot} ecosystem and what advantages it offers over other \gls{iot} protocols.
+A \gls{coap}-based \gls{iot} architecture is proposed using a \gls{rpi} and sensors acting as \gls{iot} endpoints.
+These endpoints will poll sensors (e.g. temperature and humidity) and using \gls{coap} 
+will send the latest data formatted as \gls{json} to the ThingsBoard cloud endpoint at regular intervals.
+ThingsBoard can create real-time \gls{iot} Dashboards for sensors data visualization and share it with users.
