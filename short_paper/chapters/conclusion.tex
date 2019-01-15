@@ -1,13 +1,15 @@
-This research investigates the use of \gls{coap} in transmitting sensor data
-to the cloud. It aims to explore how \gls{coap} fits into the \gls{iot} ecosystem and
-what advantages it offers over other \gls{iot} protocols. It also shows how a \gls{rpi} can
-be used with Python to create an \gls{iot} device capable of transferring data to the cloud. 
+The \gls{coap}--based \gls{iot} architecture is proposed using a \acrlong{rpi},
+temperature and humidity sensors and ThingsBoard \gls{iot} platform to monitor 
+and visualise sensors data.
+The \gls{coap} protocol is used to send the temperature and humidity data 
+formatted as \acrfull{json} to the ThingsBoard cloud endpoint at regular intervals.
+ThingsBoard is deployed to monitor and visualise data by creating  \gls{iot} 
+Dashboards and updating in real-time.
 
 The \gls{rpi} has been connected to a DHT22 temperature and humidity sensor using
 the \glspl{rpi} \gls{gpio} pins. A Python script running on the \gls{rpi} uses
 an external library provided by AdaFruit to poll the sensor at intervals and 
-obtain the current temperature and humidity. Using the CoAPthon \citep{tanganelli_coapthon:_2015} 
+obtain the current temperature and humidity. Using the CoAPthon 
 library, a \gls{coap} client is created and used to send a \gls{coap} POST 
-message containing the sensor data to a ThingsBoard 
-\citep{thingsboard_inc._thingsboard_2018} telemetry endpoint. This data 
-is then displayed to the user in a dashboard.
+message containing the sensor data to a ThingsBoard telemetry endpoint.
+This data is then displayed to the user in a dashboard.
