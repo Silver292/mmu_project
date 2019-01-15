@@ -1,13 +1,14 @@
 \citet{rode_iot_2017} carries out a similar investigation, using a \gls{rpi} 
 device as an \gls{iot} node connected to sensors. The \gls{rpi} collects the 
-data from the sensors and then transmits the data to a cloud platform. The 
-cloud platform in this instance is a \gls{http} server which will receive the
-sensor data and display it to the user. \citet{rode_iot_2017} proposes using the 
+data from the sensors and then transmits the data to a \gls{http} server. 
+The \gls{http} server acts as a stand in for a cloud platform and recieves
+the sensor data and displays it to the user.
+\citet{rode_iot_2017} proposes using the 
 \gls{mqtt} protocol to transmit the sensor data from the \gls{rpi} to the
 \gls{http} server.
 \gls{mqtt} is a popular \gls{iot} protocol developed to specialise in the transfer
 of data from \glspl{wsn} \citep{hunkeler_mqtt-s_2008}. \gls{mqtt} works on a 
-publish/subscribe model; in \citet{rode_iot_2017} the \gls{rpi} acts a \textit{publisher}, 
+publish/subscribe model where the \gls{rpi} acts a \textit{publisher}, 
 publishing the sensor data to the broker and the \gls{http} server acts as a
 \textit{subscriber}. The \gls{mqtt} broker is responsible for coordinating subscribers 
 to the data and subscribers will usually have to contact the broker explicitly in 
@@ -17,7 +18,7 @@ node in the \gls{coap} network acts as both a server and a client in a more trad
 \gls{http} model and nodes within the infrastructure will communicate with one
 another directly.
 
-\citet{jassas_smart_2015} used a \gls{rpi} connected to sensors to measure 
+\citet{jassas_smart_2015} has used a \gls{rpi} connected to sensors to measure 
 patients' body temperature and transmit this data wirelessly to the cloud.
 In that paper, the data was transmitted to an \gls{aws} cloud computing platform.
 There the data was stored, mined in order to make decisions, 
@@ -27,7 +28,7 @@ The development of specialised protocols for constrained devices, such as \gls{c
 could allow these health monitoring \glspl{rpi} to save power,
 save network bandwidth and potentially receive more readings to process.
 
-\citet{lee_internet_2018} used a \gls{rpi} combined with a DHT22 sensor to measure
+\citet{lee_internet_2018} proposes a \gls{rpi} combined with a DHT22 sensor to measure
 the indoor temperature in real-time. This data was transmitted using \gls{http}
 to a \gls{rest} \gls{api}, where the temperature was stored in a database.
 These temperatures were then used to inform an application replicating 

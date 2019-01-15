@@ -25,7 +25,7 @@ was imported to the script. This library contains a \texttt{read\_retry()}
 method that will attempt to read the temperature and humidity data from the 
 DHT22 sensor and return values as floating point decimals; 
 if no reading is available it will try again up to a specified number of retries,
-defaulting to fifteen.
+defaulting to fifteen. This method is shown in \lstref{lst:get_data}.
 
 \begin{listing}[H]
     \begin{minted}
@@ -40,26 +40,27 @@ defaulting to fifteen.
     \label{lst:payload_format}
 \end{listing}
 
+\input{assets/figures/get_sensor_data_fig.tex}
+
 Once the sensor data is returned, the payload is constructed. The payload 
 consists of the temperature and humidity data formatted into a JSON object, 
 shown in \lstref{lst:payload_format}. This data is converted using the built-in
 Python \gls{json} library. 
+\input{assets/figures/send_data_fig.tex}
 With the formatted payload, the \gls{coap} message is sent to the ThingsBoard
 endpoint; the responding message from the ThingsBoard node is printed to the console.
+The Python procedure that sends the data to the ThingsBoard endpoint can be seen 
+in \lstref{lst:send_data}.
 Here, the script will wait a specified amount of time and then will repeat the 
 process from retrieving the data. This process is shown in 
-\algref{alg:get_send_data_alg}. 
+\figref{alg:get_send_data_alg}. 
 % The Python script that accomplishes this is shown in the \hyperref[app:A]{Appendix}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\imageWidth\textwidth]{assets/thingsboard_dashboard.png}
-    \caption{\label{fig:thingsboard_dashboard} ThingsBoard dashboard showing temperature and humidity data.}
-\end{figure}
-
-\input{assets/figures/get_sensor_data_fig.tex}
-
-\input{assets/figures/send_data_fig.tex}
+\begin{figure*}[t]
+    \includegraphics[width=\textwidth]{assets/thingsboard_dashboard.png}
+    \caption{\label{fig:thingsboard_dashboard} ThingsBoard dashboard created in 
+    implementation showing temperature and humidity data.}
+\end{figure*}
 
 Once the ThingsBoard cloud receives the data, the data is processed through the
 ThingsBoard cloud's rules engine. For this study, no extra rules have been 

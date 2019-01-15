@@ -52,7 +52,7 @@ The parts of the system are explained below:
     identified by the cloud platforms \gls{uri}.
 
     \item[Cloud]
-    This study will make use of an open source cloud platform, ThingsBoard.
+    This study will make use of an open source cloud platform, ThingsBoard \autocite{thingsboard_inc._thingsboard_2018}.
     ThingsBoard is an \gls{iot} platform that allows the collection and 
     visualisation of data from \gls{iot} devices, a connection from \gls{iot} devices
     using \gls{mqtt}, \gls{coap} or \gls{http}, the definition of rules to validate
@@ -89,10 +89,10 @@ At intervals, the script will use the AdaFruit DHT library
 the DHT22 sensor's current temperature and humidity readings. 
 This data will then be formatted into \gls{json}
 in order to be transmitted.
-Then using the CoAPthon \citep{tanganelli_coapthon:_2015, tanganelli_coapthon3_2018} library a \gls{coap} 
+Then using the CoAPthon \citep{tanganelli_coapthon_2015, tanganelli_coapthon3_2018} library a \gls{coap} 
 message will be created with the sensors \gls{json} data as the payload. 
 This loop will then repeat while the \gls{rpi} is active, this process is 
-formalised in \algref{alg:get_send_data_alg}.
+formalised in \figref{alg:get_send_data_alg}.
 This message will then be sent over \gls{udp} to a \gls{coap} \gls{uri} 
 hosted by the cloud platform as illustrated in \figref{fig:rpi_cloud_comms}.
 

@@ -1,17 +1,35 @@
-\begin{algorithm}[htbp]
-    \KwData{Temperature and humidity data from sensor}
-    \KwResult{Sensor data sent to Cloud CoAP endpoint}
-    initialisation\;
-    define the interval in seconds (DHT22 sensor interval is 2 seconds)\;
-    \While{running}{
-        get latest sensor data from DHT22 sensor\;
-        \eIf{sensor data is returned}{
-            format data into json object\;
-            create CoAP Post message with cloud uri as destination\;
-            send CoAP message\;
-        }{
-            wait interval time and continue\;
-        }
-    }
-    \caption{\label{alg:get_send_data_alg}How to get data from sensor and send to cloud.}
-\end{algorithm}
+% \begin{algorithm}[htbp]
+%     \KwData{Temperature and humidity data from sensor}
+%     \KwResult{Sensor data sent to Cloud CoAP endpoint}
+%     initialisation\;
+%     define the interval in seconds (DHT22 sensor interval is 2 seconds)\;
+%     \While{running}{
+%         get latest sensor data from DHT22 sensor\;
+%         \eIf{sensor data is returned}{
+%             format data into json object\;
+%             create CoAP Post message with cloud uri as destination\;
+%             send CoAP message\;
+%         }{
+%             wait interval time and continue\;
+%         }
+%     }
+%     \caption{\label{alg:get_send_data_alg}How to get data from sensor and send to cloud.}
+% \end{algorithm}
+
+\begin{figure}[H]
+    \begin{algorithmic}[1]
+        \Procedure{\textit{Get sensor data}}{}
+        \While{\textit{running}}
+        \State Get data from sensor;
+        \If{\textit{data is returned}}
+           \State Format data into \gls{json} object;
+           \State Create \gls{coap} POST message;
+           \State Send \gls{coap} message;
+        \Else
+            \State Wait interval time and continue;
+        \EndIf
+        \EndWhile\label{euclidendwhile}
+        \EndProcedure
+    \end{algorithmic}
+    \caption{Get sensor data algorithm}\label{alg:get_send_data_alg}
+\end{figure}
